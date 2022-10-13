@@ -12,4 +12,16 @@ attend函数负责模拟所有学生的出席情况
     write_student()
     write_teacher()
     write_situation(day）
-    以上三个函数用于将学生表和教师表打印出来，write_situation负责打印点名情况
+    以上三个函数用于将学生表和教师表打印出来，write_situation负责打印点名情况，day表示的是点名的日期或者第几次课
+    
+get_E（）函数用于获取每次点名得到的e值
+
+call（day）函数通过调用
+    attend()
+    roll_call()
+    write_student()
+    write_teacher()
+    write_situation(day)
+    get_E()
+    
+等函数，完成一次点名的全过程
