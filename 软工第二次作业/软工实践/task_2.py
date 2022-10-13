@@ -6,6 +6,7 @@ sabsents = np.random.normal(0.5, 0.15, [1, 90])
 students = []
 teachers = []
 unlike_study = []
+lines = []
 
 
 def sort_unwilling(arr, left, right):
@@ -48,6 +49,19 @@ def sort_sno(arr, left, right):
     arr[i][0] = temp
     sort_sno(arr, left, j - 1)
     sort_sno(arr, j + 1, right)
+
+
+def read_data():
+    st = open("student_table.txt", "r")
+    for i in st.readlines():
+        lines.append(i.split())
+    for j in range(len(lines) - 1):
+        students[j][0] = lines[j + 1][0]
+        students[j][1] = lines[j + 1][1]
+        students[j][2] = sabsents[0][j]
+        students[j][3] = 0
+        students[j][4] = 0
+        students[j][5] = j
 
 
 def init_student_list(num):
@@ -136,8 +150,8 @@ def roll_call():
     sort_unwilling(teachers, 0, len(students) - 1)
     for i in range(15):
         if students[i][4] == 1:
-            teachers[students[-i][5]][4] = 1
-            teachers[students[-i][5]][2] += 1
+            teachers[students[-i][5]-1][4] = 1
+            teachers[students[-i][5]-1][2] += 1
     for k in range(10):
         rand4 = random.randint(0, len(students) - 1)
         for h in range(rand4):
@@ -168,7 +182,7 @@ def main():
     attend()
     first_roll_call()
     for i in range(20):
-        call(i+1)
+        call(i + 1)
 
 
 if __name__ == "__main__":
